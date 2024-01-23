@@ -34,7 +34,33 @@ function playRound(playerSelection, computerSelection){
     }
 };
 
-const playerSelection = prompt('Rock, paper or scissors?').toUpperCase();
-const computerSelection = getComputerChoice();
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
 
-console.log(playRound(playerSelection, computerSelection));
+    for (let i = 0; i < 5; i ++) {
+        const playerSelection = prompt('Rock, paper or scissors?').toUpperCase();
+        const computerSelection = getComputerChoice();
+
+        const result = playRound(playerSelection, computerSelection);
+        console.log(result);
+
+        if (result.includes('win')) {
+            playerScore ++;
+        } else if (result.includes('lose')) {
+            computerScore++;
+        }
+    }
+
+    console.log('Game over!')
+
+    if (playerScore > computerScore) {
+        console.log('You won the game!')
+    } else if (playerScore < computerScore) {
+        console.log('You lost the game!')
+    } else {
+        console.log('It\'s a tie!')
+    }
+};
+
+game();
